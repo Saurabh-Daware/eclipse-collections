@@ -1183,6 +1183,12 @@ public class ArrayStack<T> implements MutableStack<T>, Externalizable
     }
 
     @Override
+    public MutableStack<T> distinct()
+    {
+        return ArrayStack.newStackFromTopToBottom(this.delegate.asReversed().distinct());
+    }
+
+    @Override
     public MutableStack<T> takeWhile(Predicate<? super T> predicate)
     {
         throw new UnsupportedOperationException(this.getClass().getSimpleName() + ".takeWhile() not implemented yet");
@@ -1198,12 +1204,6 @@ public class ArrayStack<T> implements MutableStack<T>, Externalizable
     public PartitionMutableStack<T> partitionWhile(Predicate<? super T> predicate)
     {
         throw new UnsupportedOperationException(this.getClass().getSimpleName() + ".partitionWhile() not implemented yet");
-    }
-
-    @Override
-    public MutableStack<T> distinct()
-    {
-        throw new UnsupportedOperationException(this.getClass().getSimpleName() + ".distinct() not implemented yet");
     }
 
     @Override

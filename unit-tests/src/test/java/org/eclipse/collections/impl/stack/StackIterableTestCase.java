@@ -1299,6 +1299,15 @@ public abstract class StackIterableTestCase
     }
 
     @Test
+    public void distinct()
+    {
+        StackIterable<Integer> stack = this.newStackFromTopToBottom(5, 5, 4, 4, 3, 3, 2, 2, 1, 1);
+        StackIterable<Integer> actual   = stack.distinct();
+        StackIterable<Integer> expected  = this.newStackWith(1, 2, 3, 4, 5);
+        assertEquals(expected, actual);
+    }
+
+    @Test
     public void testHashCode()
     {
         StackIterable<Integer> stack1 = this.newStackWith(1, 2, 3, 5);
